@@ -1,0 +1,53 @@
+
+<app-crear-editar-rol
+   [rolValueInput]="form.get('rol')?.value"
+   [mostrarModalInput]="mostrarModal"
+   (modalCanceladoOutput)="modalCanceladoOutput($event)"
+   (createUpdateOk)="ocultarModalDatoCreadoOutput($event)">
+</app-crear-editar-rol>
+
+<!-- Confirm -->
+<p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+
+<!-- Toast -->
+<p-toast></p-toast>
+
+<p-table #dtRoles [value]="roles" [loading]="isLoading" [rows]="10" [paginator]="true"
+   [globalFilterFields]="['name']"
+   [rowsPerPageOptions]="[10,25,50]"
+   [tableStyle]="{'min-width': '100rem'}" [filterDelay]="0" [rowHover]="true" styleClass="p-datatable-sm"
+   [showCurrentPageReport]="true" currentPageReportTemplate="Mostrando {first} al {last} de {totalRecords} Registros">
+   <ng-template pTemplate="caption">
+      <div class="flex align-items-center justify-content-between">
+         <p class="titulo">Lista de Roles</p>
+         <div class="flex align-items-center gap-2">
+            <span class="p-input-icon-left">
+               <i class="pi pi-search"></i>
+               <input pInputText type="text" (input)="dtRoles.filterGlobal($any($event.target).value, 'contains')" placeholder="Buscar..." />
+            </span>
+            <button pButton label="Crear Nuevo" (click)="mostrarModalFuncion()" class="cbc4"></button>
+         </div>
+      </div>
+   </ng-template>
+   <ng-template pTemplate="header">
+      <tr>
+         <th pSortableColumn="name">Rol <p-sortIcon field="name"></p-sortIcon></th>
+         <th style="width:10%">Acciones</th>
+      </tr>
+   </ng-template>
+   <ng-template pTemplate="body" let-rol>
+      <tr>
+         <td>{{ rol.name }}</td>
+         <td class="flex gap-1">
+            <button pButton type="button" label="Editar" (click)="editar(rol)" class="cba3"></button>
+            <button pButton type="button" label="Eliminar" class="p-button-danger"
+               (click)="confirmarEliminar(rol.id)"></button>
+         </td>
+      </tr>
+   </ng-template>
+   <ng-template pTemplate="emptymessage">
+      <tr>
+         <td colspan="2">No se encontraron registros.</td>
+      </tr>
+   </ng-template>
+</p-table>

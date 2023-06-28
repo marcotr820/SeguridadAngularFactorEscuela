@@ -1,0 +1,14 @@
+.estado-false {
+    background-color: var(--color-background-corporativo-3);
+    color: #fff;
+}
+
+.estado-true {
+    background-color: #EF4444;
+    color: #fff;
+}
+
+.product-badge {
+    padding: 0 3px;
+    border-radius: 3px;
+}

@@ -1,0 +1,68 @@
+<!-- Toast -->
+<p-toast></p-toast>
+
+<p-dialog header="Crear Usuario" [(visible)]="modalVisible" [modal]="true" [style]="{width: '450px'}"
+    [resizable]="false" [closable]="false" [draggable]="false" [closeOnEscape]="false"
+    [contentStyle]="{paddingBottom:'7px', paddingTop:'5px'}">
+    <form autocomplete="off" [formGroup]="crearUsuarioForm" (ngSubmit)="crearUsuario($event)">
+        <!-- formulario principal -->
+        <div class="flex flex-column gap-3 mb-2">
+
+            <ul *ngIf="erroresMsj && erroresMsj.length > 0" class="m-0 p-2 border-red-600 border-2" style="list-style: none;">
+                <li *ngFor="let error of erroresMsj" class="text-red-600">
+                    <i class="pi pi-times-circle"></i> {{ error }}
+                </li>
+            </ul>
+
+            <div class="field">
+                <label>Usuario</label>
+                <span class="p-input-icon-right block">
+                    <i class="pi pi-spin pi-spinner" *ngIf="crearUsuarioForm.controls['userName'].pending"></i>
+                    <input type="text" pInputText [style]="{ width: '100%' }" formControlName="userName" required
+                        [ngClass]="{'ng-invalid': campoEsValido('userName')}">
+                </span>
+                <small *ngIf="campoEsValido('userName')" class="p-error block">{{ userNameMsjError }}</small>
+            </div>
+            <div class="field">
+                <label>Email</label>
+                <span class="p-input-icon-right block">
+                    <i class="pi pi-spin pi-spinner" *ngIf="crearUsuarioForm.controls['email'].pending"></i>
+                    <input type="text" pInputText [style]="{ width: '100%' }" formControlName="email" required
+                        [ngClass]="{'ng-invalid': campoEsValido('email')}">
+                </span>
+                <small *ngIf="campoEsValido('email')" class="p-error block">{{ emailErrorMsj }}</small>
+            </div>
+
+            <div class="field">
+                <label for="">Rol</label>
+                <app-select-rol [rolesInvalidInput]="rolesInvalid" (rolOutput)="recibirRol($event)">
+                </app-select-rol>
+                <small *ngIf="campoEsValido('rol')" class="p-error block">El rol es obligatorio.</small>
+            </div>
+
+            <div class="field">
+                <label>Password</label>
+                <p-password type="password" [toggleMask]="true" [feedback]="false" styleClass="w-full"
+                    autocomplete="password" [ngClass]="{'ng-invalid ng-dirty': campoEsValido('password')}"
+                    formControlName="password" required inputStyleClass="w-full"></p-password>
+                <small *ngIf="campoEsValido('password')" class="p-error block">El password debe tener al menos 7
+                    caracteres.</small>
+            </div>
+            <div class="field ocultar">
+                <label>Confirmar Password</label>
+                <p-password type="password" [toggleMask]="true" [feedback]="false" styleClass="w-full"
+                    autocomplete="confirmarPassword" [ngClass]="{'ng-invalid': campoEsValido('confirmarPassword')}"
+                    formControlName="confirmarPassword" required inputStyleClass="w-full"></p-password>
+                <small *ngIf="campoEsValido('confirmarPassword')" class="p-error block">Los password no
+                    coinciden.</small>
+            </div>
+
+            <div class="flex justify-content-end align-items-center gap-2">
+                <button type="button" pButton label="Cancelar" class="cbn2" (click)="ocultarModalCancelado()"></button>
+                <button type="submit" [loading]="isLoading" pButton label="Guardar" class="cbc4"></button>
+            </div>
+        </div>
+        <!-- <pre>{{ crearUsuarioForm.value | json }}</pre> -->
+        <!-- {{ crearUsuarioForm.valid }} -->
+    </form>
+</p-dialog>

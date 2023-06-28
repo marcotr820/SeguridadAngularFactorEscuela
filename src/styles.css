@@ -1,0 +1,176 @@
+/* You can add global styles to this file, and also import other style files */
+body, html {
+   margin: 0;
+   padding: 0;
+}
+@font-face {
+   font-family: OpenSans;
+   src: url(assets/fonts/open-sans/OpenSans-Regular.ttf) format('truetype');
+}
+@font-face {
+   font-family: Excon;
+   src: url(assets//fonts/excon/Excon-Bold.ttf) format('truetype');
+}
+:root {
+   --fuente-excon: Excon;
+   --fuente-opensans: OpenSans;
+
+   --color-text-corporativo-1: #E8EDEA;
+   --color-text-corporativo-2: #A3B7AB;
+   --color-text-corporativo-3: #5D806B;
+   --color-text-corporativo-4: #184A2C;
+
+   --color-text-acento-1: #F1F8EB;
+   --color-text-acento-2: #C8E1AF;
+   --color-text-acento-3: #9FCB72;
+   --color-text-acento-4: #76B536;
+
+   --color-text-neutral-1: #E6E6E6;
+   --color-text-neutral-2: #999999;
+   --color-text-neutral-3: #4D4D4D;
+   --color-text-neutral-4: #000000;
+   
+   --color-background-corporativo-1: #E8EDEA;
+   --color-background-corporativo-2: #A3B7AB;
+   --color-background-corporativo-3: #5D806B;
+   --color-background-corporativo-4: #184A2C;
+
+   --color-background-acento-1: #F1F8EB;
+   --color-background-acento-2: #C8E1AF;
+   --color-background-acento-3: #9FCB72;
+   --color-background-acento-4: #76B536;
+
+   --color-background-neutral-1: #E6E6E6;
+   --color-background-neutral-2: #999999;
+   --color-background-neutral-3: #4D4D4D;
+   --color-background-neutral-4: #000000;
+
+   --color-error: #eb0400;
+}
+
+html, body, body .p-component {
+   font-family: OpenSans;
+   /* font-size: 13.8px; */
+}
+
+.titulo {
+   font-family: var(--fuente-excon);
+   font-size: 25px;
+   margin: 0;
+   padding: 0;
+}
+.subtitulo {
+   font-family: var(--fuente-excon);
+   font-size: 20px;
+   margin: 0;
+   padding: 0;
+}
+/* Colores estilo button Inicio */
+.cbc4 {
+   background-color: var(--color-text-corporativo-4) !important;
+}
+.cba3 {
+   background-color: var(--color-background-acento-3) !important;
+}
+.cbn2 {
+   background-color: var(--color-background-neutral-2) !important;
+}
+.ctc4 {
+   color: var(--color-text-corporativo-4) !important;
+}
+.ctc2 {
+   color: var(--color-text-corporativo-2);
+}
+/* Colores estilo button Fin */
+
+/* START PRIMENG INPUT */
+.p-inputtext.p-component {
+   padding: 3px;
+}
+.field {
+   margin-bottom: 0 !important;
+}
+/* END PRIMENG INPUT */
+
+/* START PRIMENG DROPDOWN SELECT */
+.p-dropdown.p-component .p-inputtext {
+   padding: 3px !important;
+   display: flex;
+   align-items: center !important;
+}
+/* END PRIMENG DROPDOWN SELECT */
+
+/* START PRIMENG BUTTON */
+.p-button {
+   padding: 5px !important;
+   border: none !important;
+}
+.p-button-label {
+   font-weight: 500 !important;
+}
+/* END PRIMENG BUTTON */
+
+/* START PRIMENG BUTTON ROUNDED*/
+.p-button.p-button-icon-only.p-button-rounded {
+   height: 2rem !important;
+}
+.p-button.p-button-icon-only {
+   width: 2rem !important;
+}
+/* END PRIMENG BUTTON ROUNDED*/
+
+/* START PRIMENG CARD */
+.content {
+   display: flex;
+   height: 100vh;
+   justify-content: center;
+   flex-direction: column;
+   align-items: center;
+}
+.p-card-header{
+   display: flex;
+   padding: 5px;
+   align-items: center;
+   justify-content: center !important;
+}
+.p-card-header img {
+   width: 200px !important;
+}
+/* END PRIMENG CARD */
+
+/* START PRIMENG CONFIRM MODAL */
+.p-confirm-dialog .p-dialog-content {
+   padding: 10px 20px !important;
+}
+.p-confirm-dialog .p-dialog-footer {
+   padding: 10px !important;
+   display: flex;
+   align-items: center !important;
+   justify-content: flex-end;
+}
+.p-confirm-dialog .p-dialog-footer .p-confirm-dialog-reject .p-button-icon {
+   display: none;
+}
+.p-confirm-dialog .p-dialog-footer .p-confirm-dialog-accept .p-button-icon {
+   display: none;
+}
+/* END PRIMENG CONFIRM MODAL */
+
+/* START PRIMENG p-messages */
+.p-message {
+   margin: 0 !important;
+}
+.p-message.p-message-success {
+   color: var(--color-text-corporativo-4) !important;
+   background-color: var(--color-background-corporativo-1) !important;
+   border: solid var(--color-background-corporativo-3) !important;
+   border-width: 0 0 0 6px !important;
+}
+.p-message .p-message-wrapper {
+   padding: 7px 10px !important;
+}
+.p-message-wrapper {
+   gap: 7px;
+   align-items: initial !important;
+}
+/* END PRIMENG p-messages */

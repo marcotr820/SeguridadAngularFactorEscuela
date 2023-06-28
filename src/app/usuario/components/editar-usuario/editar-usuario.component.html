@@ -1,0 +1,43 @@
+<!-- Toast -->
+<p-toast></p-toast>
+
+<p-dialog header="Editar Usuario" [(visible)]="modalVisible" [modal]="true" [style]="{width: '450px'}"
+    [resizable]="false" [closable]="false" [draggable]="false" [closeOnEscape]="false"
+    [contentStyle]="{paddingBottom:'7px', paddingTop:'5px'}">
+    
+    <form *ngIf="!modalIsLoading" autocomplete="off" [formGroup]="editarUsuarioForm" (ngSubmit)="guardarUsuario($event)">
+        <!-- formulario principal -->
+        <div class="flex flex-column gap-3 mb-2">
+
+            <div class="field">
+                <p class="font-semibold m-0">{{ usuario.userName }}</p>
+                <p class="m-0">{{ usuario.email }}</p>
+            </div>
+
+            <div class="field">
+                <label for="">Rol</label>
+                <app-select-rol
+                    [rolInput]="rolUsuario"
+                    (rolOutput)="recibirRol($event)">
+                </app-select-rol>
+                <!-- <small *ngIf="campoEsValido('rol')" class="p-error block">El rol es obligatorio.</small> -->
+            </div>
+
+            <div class="field">
+                <label for="">Estado</label>
+                <p-dropdown [options]="estadosBloqueo" placeholder="Seleccione estado" optionValue="value"
+                    formControlName="isBlocked" appendTo="body" styleClass="input-select w-full">
+                </p-dropdown>
+                <!-- <small *ngIf="campoEsValido('estadoUsuario')" class="p-error block">El estado es obligatorio.</small> -->
+            </div>
+
+            <div class="flex justify-content-end align-items-center gap-2">
+                <button type="button" pButton label="Cancelar" class="cbn2" (click)="ocultarModalCancelado()"></button>
+                <button type="submit" [loading]="isLoading" pButton label="Guardar" class="cbc4" [disabled]="editarUsuarioForm.pristine"></button>
+            </div>
+        </div>
+        <!-- <pre>{{ editarUsuarioForm.value | json }}</pre> -->
+        <!-- {{ crearUsuarioForm.valid }} -->
+        <!-- {{ editarUsuarioForm.pristine }} -->
+    </form>
+</p-dialog>

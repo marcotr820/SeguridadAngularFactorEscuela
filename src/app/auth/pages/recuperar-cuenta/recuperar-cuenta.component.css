@@ -1,0 +1,27 @@
+.content {
+   display: flex;
+   height: 100vh;
+   justify-content: center;
+   flex-direction: column;
+   align-items: center;
+}
+
+/* img */
+.p-card .p-card-title {
+   font-weight: 400;
+   text-align: center;
+   margin-bottom: 15px;
+}
+
+.p-card-header {
+   display: flex;
+   padding-top: 20px;
+   align-items: center;
+   justify-content: center !important;
+}
+
+.p-card-header img {
+   height: 50px;
+   width: 200px !important;
+}
+/* img */

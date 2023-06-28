@@ -1,0 +1,60 @@
+<app-usuario-bloqueado [modalVisibleInput]="modalBloqueoVisible"
+    (modalVisibleOutput)="ocultarModalBloqueo($event)"></app-usuario-bloqueado>
+
+<div class="content">
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <p-card [style]="{width: '450px'}">
+
+            <ng-template pTemplate="header">
+                <img alt="Card" src="../../../assets/images/vidaSalud-Logo.svg">
+            </ng-template>
+
+            <div class="text-center mb-2">
+                <p class="titulo ctc4">Bienvenido de nuevo</p>
+                <p class="subtitulo ctc2">Acceda a su cuenta</p>
+            </div>
+
+            <div class="flex flex-column gap-3">
+                <ul *ngIf="erroresMsj && erroresMsj.length > 0" class="m-0 p-2 border-red-600 border-2" style="list-style: none;">
+                    <li *ngFor="let error of erroresMsj" class="text-red-600">
+                        <i class="pi pi-times-circle"></i> {{ error }}
+                    </li>
+                </ul>
+
+                <div class="field">
+                    <label>Usuario</label>
+                    <input type="text" id="userName" pInputText [style]="{ width: '100%' }" formControlName="userName"
+                        [ngClass]="{'ng-invalid ng-dirty': campoNoValido('userName')}" required>
+                    <small *ngIf="campoNoValido('userName')" class="p-error block">El usuario debe tener al menos 5
+                        caracteres.</small>
+                </div>
+
+                <div class="field">
+                    <label>Password</label>
+                    <p-password type="password" [toggleMask]="true" [feedback]="false" formControlName="password"
+                        [ngClass]="{'ng-invalid ng-dirty': campoNoValido('password')}" styleClass="w-full" required
+                        inputStyleClass="w-full"></p-password>
+                    <small *ngIf="campoNoValido('password')" class="p-error block">El password debe tener al menos 7
+                        caracteres.</small>
+                </div>
+
+                <div class="flex justify-content-end">
+                    <a class="" href="/auth/recuperar-cuenta">
+                        <small>He olvidado la contraseña</small>
+                    </a>
+                </div>
+
+                <button class="w-full cbc4" type="submit" [loading]="isLoading" [disabled]="loginForm.invalid" pButton
+                    label="Iniciar Sesion"></button>
+
+                <div class="flex justify-content-center align-items-center">
+                    <span>No tienes una cuenta?,</span>
+                    <p-button class="inline m-0" routerLink="/auth/registro" label="Registrate"
+                        styleClass="p-button-link"></p-button>
+                </div>
+            </div>
+
+        </p-card>
+
+    </form>
+</div>

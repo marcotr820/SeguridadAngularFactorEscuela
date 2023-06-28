@@ -1,0 +1,38 @@
+<p-dialog header="Cambiar nombre de usuario" [(visible)]="modalVisible" [modal]="true" [style]="{width: '500px'}"
+    [draggable]="false" [resizable]="false" [closable]="false" [contentStyle]="{paddingBottom:'7px', paddingTop:'5px'}">
+
+    <p-messages severity="success" *ngIf="exitoMsj" class="block mb-3">
+        <ng-template pTemplate>
+            <i class="pi pi-check-circle" style="font-size: 1.5rem;"></i>
+            <span>Felicidades tu nombre de usuario se ha actualizado correctamente, por favor vuelve a iniciar sesión.</span>
+        </ng-template>
+    </p-messages>
+
+    <form autocomplete="off" [formGroup]="formEditarUserName" (ngSubmit)="actualizarUserName($event)" *ngIf="!exitoMsj">
+        <!-- formulario principal -->
+        <div class="flex flex-column gap-3 mb-2">
+
+            <ul *ngFor="let error of errorMsjs" class="m-0 p-2 border-red-600 border-2" style="list-style: none;">
+                <li class="text-red-600">
+                   <i class="pi pi-times-circle"></i> {{ error }}
+                </li>
+            </ul>
+
+            <span>nombre de usuario actual <strong>{{ usuario.userName }}</strong></span>
+
+            <div class="field">
+                <label>Nombre de usuario</label>
+                <span class="p-input-icon-right block">
+                    <!-- <i class="pi pi-spin pi-spinner" *ngIf="formEditarUserName.controls['userName'].pending"></i> -->
+                    <input type="text" pInputText [style]="{ width: '100%' }" formControlName="nuevoUserName" required
+                        [ngClass]="{'ng-invalid': campoEsValido('nuevoUserName')}">
+                </span>
+                <small *ngIf="campoEsValido('nuevoUserName')" class="p-error block">{{ userNameMsjError }}</small>
+            </div>
+            <div class="flex justify-content-end align-items-center gap-2">
+                <button pButton type="button" label="Cancelar" class="cbn2" (click)="cancelarModal()"></button>
+                <button pButton type="submit" [disabled]="formEditarUserName.invalid" [loading]="isLoading" label="Guardar" class="cbc4"></button>
+            </div>
+        </div>
+    </form>
+</p-dialog>

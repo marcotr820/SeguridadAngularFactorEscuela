@@ -1,0 +1,15 @@
+<form [formGroup]="formRol">
+    <p-dropdown [options]="roles" (onChange)="onDropdownChange($event)" optionLabel="name" filterBy="name"
+        placeholder="Seleccione un Rol" formControlName="rol" field="name" appendTo="body" styleClass="w-full"
+        [ngClass]="{'ng-dirty ng-invalid': campoNoValido}">
+
+        <ng-template let-rol pTemplate="item">
+            <div class="rol-item">
+                <div>{{ rol.name }}</div>
+            </div>
+        </ng-template>
+    </p-dropdown>
+    <small *ngIf="campoNoValido" class="p-error">El rol es obligatorio</small>
+
+    <!-- {{ formRol.value | json }} -->
+</form>

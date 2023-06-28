@@ -1,0 +1,33 @@
+
+/* START HEADER */
+.myStyle.p-menubar {
+   background: #E8EDEA;
+   border-radius: 0;
+   height: 50px;
+   justify-content: space-between;
+}
+.myStyle.p-menubar .p-menubar-root-list {
+   gap: 5px;
+}
+.myStyle.p-menubar .p-menubar-root-list .p-menuitem .p-menuitem-link:hover{
+   background: #A3B7AB;
+}
+.myStyle.p-menubar .p-menubar-end {
+   display: none;
+}
+/* END HEADER */
+
+/* START PRIMENG INICIAR SESION DROPDOWN / CERRAR SESION */
+.alinear-derecha .p-submenu-list {
+   left: auto;
+   right: 0;
+   width: 18rem;
+}
+.p-element.estilo-dropdown.p-menuitem .p-menuitem-link .p-menuitem-icon {
+   font-weight: bold;
+   margin-right: 0 !important;
+}
+.estilo-dropdown.p-menuitem .p-menuitem-link .p-submenu-icon {
+   display: none;
+}
+/* END PRIMENG INICIAR SESION DROPDOWN / CERRAR SESION */

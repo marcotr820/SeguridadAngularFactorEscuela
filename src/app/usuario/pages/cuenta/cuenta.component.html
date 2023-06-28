@@ -1,0 +1,67 @@
+<app-editar-username
+   [mostrarModalInput]="mostrarModalUserName" 
+   (ocultarModalOutput)="ocultarModalUserName($event)"
+   (ocultarModalCanceladoOutput)="ocultarModalUserNameCancelado($event)"></app-editar-username>
+
+<app-editar-password
+   [mostrarModalInput]="mostrarModalPassword"
+   (ocultarModalCanceladoOutput)="ocultarModalPasswordCancelado($event)"></app-editar-password>
+
+<p-card [style]="{'width': '70rem', 'margin-bottom': '2em'}">
+   <h2 class="mt-0">Configuración de la cuenta</h2>
+
+   <div class="flex align-items-center">
+      <span class="font-semibold mr-5">Email asociado a tu cuenta</span>
+      <h3>{{ usuario.email }}</h3>
+   </div>
+
+   <p>En este apartado puedes cambiar los datos de tu cuenta.</p>
+
+   <div class="card">
+      <p-divider align="left">
+         <div class="inline-flex align-items-center">
+            <i class="pi pi-user mr-2"></i>
+            <b>
+               <h3 class="m-0">Ajustes del perfil</h3>
+            </b>
+         </div>
+      </p-divider>
+
+      <p>Cambia los datos de identificación de tu cuenta.</p>
+
+      <p-card>
+         <div class="field grid">
+            <label class="col-fixed font-semibold" style="width:200px">Nombre de usuario</label>
+            <div class="col flex align-items-center gap-1">
+               <label class="col-fixed">{{ usuario.userName }}</label>
+               <button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded cbc4"
+                        (click)="modalEditarUserNameVisible()"></button>
+            </div>
+         </div>
+      </p-card>
+
+   </div>
+
+   <div class="card">
+      <p-divider align="left">
+         <div class="inline-flex align-items-center">
+            <i class="pi pi-lock mr-2"></i>
+            <b>
+               <h3 class="m-0">Seguridad</h3>
+            </b>
+         </div>
+      </p-divider>
+
+      <p>Mantén tu cuenta segura.</p>
+
+      <p-card>
+         <div class="field grid">
+            <label class="col-fixed font-semibold" style="width:200px">Password</label>
+            <div class="col flex align-items-center">
+               <p-button label="Cambiar password" (click)="modalEditarPasswordVisible()" styleClass="p-button-link ctc4"></p-button>
+            </div>
+         </div>
+      </p-card>
+
+   </div>
+</p-card>

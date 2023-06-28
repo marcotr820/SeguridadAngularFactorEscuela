@@ -1,0 +1,69 @@
+<div class="content">
+    <form [formGroup]="registroForm" (ngSubmit)="registro()">
+        <p-card [style]="{width: '450px'}" styleClass="m-0">
+
+            <ng-template pTemplate="header">
+                <img alt="Card" src="../../../assets/images/vidaSalud-logo.png">
+            </ng-template>
+
+            <div class="text-center mb-2">
+                <p class="titulo ctc4">Registro</p>
+                <p class="subtitulo ctc2">Crea una nueva cuenta</p>
+            </div>
+
+            <div class="flex flex-column gap-3">
+
+                <ul *ngFor="let error of erroresMsj" class="m-0 p-2 border-red-600 border-2" style="list-style: none;">
+                    <li class="text-red-600">
+                        <i class="pi pi-times-circle"></i> {{ error }}
+                    </li>
+                </ul>
+
+                <div class="field">
+                    <label for="">Usuario</label>
+                    <span class="p-input-icon-right block">
+                        <!-- <i class="pi pi-spin pi-spinner" *ngIf="registroForm.controls['userName'].pending"></i> -->
+                        <input type="text" pInputText [style]="{ width: '100%' }" formControlName="userName" required
+                            [ngClass]="{'ng-invalid': campoNoValido('userName')}">
+                    </span>
+                    <small *ngIf="campoNoValido('userName')" class="p-error block">{{ userNameMsjError }}</small>
+                </div>
+
+                <div class="field">
+                    <label for="">Email</label>
+                    <span class="p-input-icon-right block">
+                        <!-- <i class="pi pi-spin pi-spinner" *ngIf="registroForm.controls['email'].pending"></i> -->
+                        <input type="text" pInputText [style]="{ width: '100%' }" formControlName="email" required
+                            [ngClass]="{'ng-invalid': campoNoValido('email')}">
+                    </span>
+                    <small *ngIf="campoNoValido('email')" class="p-error block">{{ emailMsjError }}</small>
+                </div>
+
+                <div class="field">
+                    <label for="">Password</label>
+                    <p-password type="password" [toggleMask]="true" [feedback]="false" styleClass="w-full"
+                        [ngClass]="{'ng-invalid': campoNoValido('password')}" formControlName="password" required
+                        inputStyleClass="w-full"></p-password>
+                    <small *ngIf="campoNoValido('password')" class="p-error block">El password debe ser mayor a 7
+                        caracteres.</small>
+                </div>
+
+                <div class="field">
+                    <label for="">Confirmar</label>
+                    <p-password type="password" [toggleMask]="true" [feedback]="false" styleClass="w-full"
+                        [ngClass]="{'ng-invalid': campoNoValido('confirmarPassword')}"
+                        formControlName="confirmarPassword" required inputStyleClass="w-full"></p-password>
+                    <small *ngIf="campoNoValido('confirmarPassword')" class="p-error block">Los password no coinciden.
+                        Inténtalo de nuevo.</small>
+                </div>
+
+                <button type="submit" class="cbc4 w-full" [loading]="isLoading" pButton label="Registrarme"></button>
+
+                <p-button class="inline m-0" routerLink="/auth/login" label="Volver al login"
+                  styleClass="p-button-link"></p-button>
+
+            </div>
+
+        </p-card>
+    </form>
+</div>

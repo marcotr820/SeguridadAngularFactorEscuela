@@ -1,0 +1,9 @@
+html, body{
+   margin: 0;
+}
+
+/* START PRIMENG CARD */
+.p-card .p-card-content {
+   padding: 0;
+}
+/* END PRIMENG CARD */

@@ -1,0 +1,34 @@
+<!-- Toast -->
+<p-toast></p-toast>
+
+<p-dialog [header]="headerModal" [(visible)]="mostrarModal" [modal]="true" [style]="{width: '450px'}"
+   [draggable]="false" [closeOnEscape]="false" [resizable]="false" [closable]="false"
+   [contentStyle]="{paddingBottom:'7px', paddingTop:'5px'}">
+   <form autocomplete="off" [formGroup]="formRol" (ngSubmit)="createUpdateRol($event)">
+      <!-- formulario principal -->
+      <div class="flex flex-column gap-3 mb-2">
+
+         <ul *ngFor="let error of erroresMsj" class="m-0 p-2 border-red-600 border-2" style="list-style: none;">
+            <li class="text-red-600">
+                <i class="pi pi-times-circle"></i> {{ error }}
+            </li>
+        </ul>
+
+         <div class="field">
+            <label>Nombre Rol</label>
+            <input type="text" formControlName="name" pInputText
+               [style]="{ 'width': '100%', 'text-transform': 'uppercase' }"
+               [ngClass]="{'ng-invalid ng-dirty': campoEsValido('name')}" />
+            <small *ngIf="campoEsValido('name')" class="p-error block">El nombre del rol es
+               obligatorio.</small>
+         </div>
+         
+         <div class="card">
+            <div class="flex justify-content-end align-items-center gap-2">
+               <button pButton type="button" label="Cancelar" class="cbn2" (click)="cancelarModal()"></button>
+               <button pButton type="submit" [loading]="isLoading" pRipple label="Guardar" class="cbc4" [disabled]="formRol.invalid || formRol.pristine"></button>
+            </div>
+         </div>
+      </div>
+   </form>
+</p-dialog>
